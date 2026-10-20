@@ -5,8 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GymApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="700">
+    <Grid Margin="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240" />
+            <ColumnDefinition Width="16" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Új foglalás"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Margin="0,0,0,12" />
+
+            <TextBlock Text="Kapcsolattartó neve" />
+            <TextBox x:Name="ContactNameTextBox"
+                     Height="28"
+                     Margin="0,4,0,10" />
+
+            <TextBlock Text="Időpont (óra)" />
+            <TextBox x:Name="TimeTextBox"
+                     Height="28"
+                     Margin="0,4,0,10" />
+
+            <TextBlock Text="Foglalás típusa" />
+            <ComboBox x:Name="TypeComboBox"
+                      Height="28"
+                      Margin="0,4,0,10"
+                      SelectionChanged="TypeComboBox_SelectionChanged">
+                <ComboBoxItem Content="Egyéni" IsSelected="True" />
+                <ComboBoxItem Content="csoportos" />
+            </ComboBox>
+
+            <TextBlock Text="Csapattagok nevei, vesszővel elválasztva" />
+            <TextBox x:Name="TeamMembersTextBox"
+                     Height="60"
+                     Margin="0,4,0,10"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap" />
+
+            <CheckBox x:Name="SeasonTicketCheckBox"
+                      Content="Van bérletem"
+                      Margin="0,0,0,12" />
+
+            <Button Content="Foglalás"
+                    Height="34"
+                    Click="BookButton_Click" />
+
+            <TextBlock x:Name="StatusTextBlock"
+                       Margin="0,12,0,0"
+                       TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="2">
+            <TextBlock Text="Foglalások"
+                       FontSize="20"
+                       FontWeight="Bold"
+                       Margin="0,0,0,12" />
+
+            <ListBox x:Name="ReservationsListBox" />
+        </StackPanel>
     </Grid>
 </Window>
